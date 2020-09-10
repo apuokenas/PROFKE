@@ -71,7 +71,7 @@ class HelloWorldApp { // Class definition
 
     public static void terminate(Exception e) {
         if (e instanceof NoSuchElementException) {
-            // NoSuchElementException if entered Ctrl+C and Scanner object is closed
+            // NoSuchElementException thrown if entered Ctrl+C and Scanner object is closed
             System.out.println("Terminating application...");
         } else {
             e.printStackTrace();
