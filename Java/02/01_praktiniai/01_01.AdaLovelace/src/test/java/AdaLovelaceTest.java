@@ -12,7 +12,7 @@ public class AdaLovelaceTest {
 
     @Test
     public void outputIsCorrect() {
-        AdaLovelace.main(new String[]{});
+        AdaLovelace.main(new String[] {});
         assertEquals("Ada Lovelace", io.getSysOut().trim());
     }
 

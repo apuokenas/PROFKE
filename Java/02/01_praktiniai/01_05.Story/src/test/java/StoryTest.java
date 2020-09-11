@@ -31,29 +31,35 @@ public class StoryTest {
 
     private void correctOutput(String name, String profession) {
         io.setSysIn(name + "\n" + profession + "\n");
-        Story.main(new String[]{});
-        String[] lines = new String[]{"I will tell you a story, but I need some information first.",
-            "What is the main character called?",
-            "What is their job?",
-            "Here is the story:",
-            "Once upon a time there was " + name + ", who was " + profession + ".",
-            "On the way to work, " + name + " reflected on life.",
-            "Perhaps " + name + " will not be " + profession + " forever."};
+        Story.main(new String[] {});
+        String[] lines = new String[] { "I will tell you a story, but I need some information first.",
+                "What is the main character called?", "What is their job?", "Here is the story:",
+                "Once upon a time there was " + name + ", who was " + profession + ".",
+                "On the way to work, " + name + " reflected on life.",
+                "Perhaps " + name + " will not be " + profession + " forever." };
 
         List<String> rows = rows(io.getSysOut().trim());
-        
-        assertEquals("Output was expected to contain " + lines.length + " line" + ((lines.length == 1) ? "" : "s") + ". Now it contained " + rows.size() + ".", lines.length, rows.size());
+
+        assertEquals("Output was expected to contain " + lines.length + " line" + ((lines.length == 1) ? "" : "s")
+                + ". Now it contained " + rows.size() + ".", lines.length, rows.size());
         for (int i = 0; i < rows.size(); i++) {
-            assertEquals("Line " + (i + 1) + " output was incorrect when the name was " + name + " and profession was " + profession + ". \nExpecting output:\n" + lines[i] + "\nBut output was:\n" + rows.get(i), lines[i].trim(), rows.get(i).trim());
+            assertEquals(
+                    "Line " + (i + 1) + " output was incorrect when the name was " + name + " and profession was "
+                            + profession + ". \nExpecting output:\n" + lines[i] + "\nBut output was:\n" + rows.get(i),
+                    lines[i].trim(), rows.get(i).trim());
         }
     }
- 
+
     @Test
     public void correctOrder() {
         List<String> code = code("Story.java");
-        int count = countOccurrences(code, "System.out.println.*nextLine.*System.out.println.*nextLine.*System.out.println");
-        int count2 = countOccurrences(code, "System.out.println.*nextInt.*System.out.println.*nextInt.*System.out.println");
-        assertTrue("Implement the program so that reading and printing alternate.\\nFirst printing, then reading, then printing, etc...", count == 1 || count2 == 1);
+        int count = countOccurrences(code,
+                "System.out.println.*nextLine.*System.out.println.*nextLine.*System.out.println");
+        int count2 = countOccurrences(code,
+                "System.out.println.*nextInt.*System.out.println.*nextInt.*System.out.println");
+        assertTrue(
+                "Implement the program so that reading and printing alternate.\\nFirst printing, then reading, then printing, etc...",
+                count == 1 || count2 == 1);
     }
 
     private List<String> rows(String out) {

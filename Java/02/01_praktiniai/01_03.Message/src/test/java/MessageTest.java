@@ -30,14 +30,16 @@ public class MessageTest {
 
     private void correctOutput(String input) {
         io.setSysIn("" + input + "\n");
-        Message.main(new String[]{});
-        String[] lines = new String[]{"Write a message:", input};
+        Message.main(new String[] {});
+        String[] lines = new String[] { "Write a message:", input };
 
         List<String> rows = rows(io.getSysOut().trim());
 
-        assertEquals("Output was expected to contain " + lines.length + " line" + ((lines.length == 1) ? "" : "s") + ". Now it contained " + rows.size() + ".", lines.length, rows.size());
+        assertEquals("Output was expected to contain " + lines.length + " line" + ((lines.length == 1) ? "" : "s")
+                + ". Now it contained " + rows.size() + ".", lines.length, rows.size());
         for (int i = 0; i < rows.size(); i++) {
-            assertEquals("Line " + (i + 1) + " output was incorrect. (User input was " + input + "\nExpecting output:\n" + lines[i] + "\nBut output was:\n" + rows.get(i), lines[i].trim(), rows.get(i).trim());
+            assertEquals("Line " + (i + 1) + " output was incorrect. (User input was " + input + "\nExpecting output:\n"
+                    + lines[i] + "\nBut output was:\n" + rows.get(i), lines[i].trim(), rows.get(i).trim());
         }
     }
 

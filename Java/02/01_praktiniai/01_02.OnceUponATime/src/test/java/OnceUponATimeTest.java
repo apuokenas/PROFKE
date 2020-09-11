@@ -20,16 +20,16 @@ public class OnceUponATimeTest {
 
     @Test
     public void correctOutput() {
-        OnceUponATime.main(new String[]{});
-        String[] lines = new String[]{"Once upon a time",
-            "there was",
-            "a program"};
+        OnceUponATime.main(new String[] {});
+        String[] lines = new String[] { "Once upon a time", "there was", "a program" };
 
         List<String> rows = rows(io.getSysOut().trim());
-        
-        assertEquals("Output was expected to contain " + lines.length + " line" + ((lines.length == 1) ? "" : "s") + ". Now it contained " + rows.size() + ".", lines.length, rows.size());
+
+        assertEquals("Output was expected to contain " + lines.length + " line" + ((lines.length == 1) ? "" : "s")
+                + ". Now it contained " + rows.size() + ".", lines.length, rows.size());
         for (int i = 0; i < rows.size(); i++) {
-            assertEquals("Line " + (i + 1) + " output was incorrect. \nExpecting output:\n" + lines[i] + "\nBut output was:\n" + rows.get(i), lines[i].trim(), rows.get(i).trim());
+            assertEquals("Line " + (i + 1) + " output was incorrect. \nExpecting output:\n" + lines[i]
+                    + "\nBut output was:\n" + rows.get(i), lines[i].trim(), rows.get(i).trim());
         }
     }
 
@@ -37,7 +37,8 @@ public class OnceUponATimeTest {
     public void numberOfSystemOutPrintlnCommands() {
         List<String> code = code("OnceUponATime.java");
         int occurrences = countOccurrences(code, "System.out.println");
-        assertEquals("The program was expected to contain 3 'System.out.println' commands. Now there were " + occurrences + ".", 3, occurrences);
+        assertEquals("The program was expected to contain 3 'System.out.println' commands. Now there were "
+                + occurrences + ".", 3, occurrences);
     }
 
     private List<String> rows(String out) {
