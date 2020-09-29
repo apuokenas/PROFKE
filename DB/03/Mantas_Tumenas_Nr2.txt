@@ -1,0 +1,33 @@
+0a. ALTER TABLE employees RENAME TO employees_backup; -- Before executing <PRACTICE_DB.SQL>
+0b. SHOW COLUMNS FROM employees;
+1. SELECT * FROM employees;
+2. SELECT emp_name, salary FROM employees;
+3. SELECT DISTINCT job_name FROM employees;
+4. SELECT CONCAT(emp_name, ' ', job_name) AS "Vardas ir pareigos" FROM employees;
+5. SELECT CONCAT(UPPER(emp_name), '(', LOWER(job_name), ')') AS Employee FROM employees;
+6. SELECT emp_id, salary, commission FROM employees;
+7. SELECT DISTINCT dep_id, job_name FROM employees;
+8. SELECT * FROM employees WHERE dep_id <> 2001;
+9. SELECT * FROM employees WHERE hire_date < '1991-01-01';
+10. SELECT ROUND(AVG(salary), 2) FROM employees WHERE job_name ILIKE 'ANALYST';
+11. SELECT * FROM employees WHERE emp_name = 'BLAZE';
+12. SELECT * FROM employees WHERE commission > salary;
+13. SELECT * FROM employees WHERE salary * 1.3 > 3000;
+14. SELECT * FROM employees WHERE job_name = 'CLERK';
+15. SELECT emp_name, job_name FROM employees WHERE salary < 3500;
+16. SELECT emp_name, job_name, salary FROM employees WHERE job_name ILIKE 'ANALYST';
+17. SELECT * FROM employees WHERE hire_date < '1991-04-01';
+18. SELECT * FROM employees WHERE manager_id IS NULL;
+19. SELECT * FROM employees WHERE hire_date = '1991-05-01';
+20. SELECT * FROM employees WHERE salary / 20 > 100; -- Assume there are 20 working days a month
+21. SELECT * FROM employees WHERE dep_id IN ('1001', '3001');
+22. SELECT * FROM employees WHERE job_name = 'CLERK' AND dep_id = '2001';
+23. SELECT * FROM employees WHERE job_name IN ('CLERK', 'MANAGER');
+24a. SELECT * FROM employees WHERE hire_date BETWEEN '1991-01-01' AND '1991-12-31';
+24b. SELECT * FROM employees WHERE EXTRACT(YEAR FROM hire_date) = '1991';
+25. SELECT * FROM employees WHERE salary * 12 BETWEEN 24000 AND 50000;
+26. SELECT * FROM employees WHERE hire_date IN ('1991-05-01', '1991-12-03');
+27. SELECT * FROM employees WHERE manager_id IN (63679, 68319, 66852, 44852);
+28. SELECT * FROM employees WHERE hire_date > '1991-07-01';
+29. SELECT * FROM employees WHERE job_name ILIKE 'MANAGER' AND dep_id IN (1001, 2001);
+30. SELECT * FROM employees WHERE commission = 0.00 OR commission IS NULL;

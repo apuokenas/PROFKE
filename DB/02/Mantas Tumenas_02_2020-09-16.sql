@@ -1,0 +1,17 @@
+SELECT * FROM employees;
+SELECT employeeid FROM employees;
+SELECT lastname, firstname, title FROM employees;
+SELECT DISTINCT city FROM employees;
+SELECT * FROM employees WHERE city = 'Seattle';
+SELECT title FROM employees WHERE firstname = 'Andrew';
+SELECT * FROM employees WHERE birthdate = '1963-07-02';
+SELECT firstname FROM employees WHERE lastname = 'Leverling';
+SELECT firstname, lastname FROM employees WHERE title = 'Sales Representative' AND country = 'USA';
+INSERT INTO employees VALUES (69, 'Česlovas', 'Juršėnas', 'PEP''sas', 'Ponas', '1938-05-18', '1992-11-25', 'Gedimino pr. 53, 01109 Vilnius, Lietuva', 'Vilnius', 'Vilniaus apskr.', '01109', 'Lithuania', '(8 5) 239 6060', 'n/a', 'In 1955, he graduated from Ignalina secondary school (now Ignalina Česlovas Kudaba Progymnasium) with a gold medal and entered Vilnius State University of Vincas Kapsukas, graduating in 1960.', NULL, '/endpoint');
+INSERT INTO employees (employeeid, firstname, lastname) VALUES (169, 'Rolandas', 'Paksas');
+UPDATE employees SET title = 'President of Hearts', titleofcourtesy = 'Mr.', birthdate = '1956-06-10', hiredate = '2003-02-26', address = 'S. Daukanto a. 3, LT-01122 Vilnius', city = 'Vilnius', region = 'Vilniaus apskr.', postalcode = 'LT-01122', country = 'Lithuania', homephone = '+370 706 64 154', extension = 'n/a', notes = 'On 5 January 2003, he was elected President of Lithuania, after a surprise win over the incumbent Valdas Adamkus in a runoff.', reportsto = '69', photopath = '/endpoint' WHERE employeeid = 169;
+SELECT * FROM employees WHERE employeeid IN (69, 169);
+INSERT INTO employees (employeeid, lastname, firstname, title) VALUES (10, 'Antanaitis', 'Antanas', 'Sales Manager');
+INSERT INTO employees (employeeid, lastname, firstname, title) VALUES (20, 'Antanaitis', 'Antaniukas', 'Sales Manager');
+UPDATE employees SET title = 'Sales Representative' WHERE lastname = 'Antanaitis';
+SELECT COUNT(*) FROM employees WHERE title = 'Sales Representative';

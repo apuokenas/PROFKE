@@ -1,0 +1,16 @@
+0. SHOW COLUMNS FROM employees;
+1a. SELECT CONCAT(UPPER(emp_name), ' ', TO_CHAR(salary * 1.15, '9,999')) FROM employees;
+1b. SELECT CONCAT(UPPER(emp_name), ' ', TO_CHAR(salary * 1.15, '$9,999')) FROM employees;
+2. SELECT emp_id, emp_name, salary, TO_CHAR(hire_date, 'Month DD, YYYY') FROM employees;
+3. SELECT emp_name, LENGTH(emp_name) FROM employees;
+4. SELECT emp_name FROM employees WHERE LENGTH(emp_name) = 6;
+5a. SELECT * FROM employees WHERE EXTRACT(MONTH FROM hire_date) = '01';
+5b. SELECT * FROM employees WHERE TO_CHAR(hire_date, 'MM') = '01';
+6. SELECT emp_id, emp_name, salary, DATEDIFF(DAY, hire_date, SYSDATE) AS experience FROM employees WHERE manager_id = 68319;
+7. SELECT * FROM employees WHERE salary % 2 <> 0;
+8a. SELECT * FROM employees WHERE EXTRACT(MONTH FROM hire_date) = '04';
+8b. SELECT * FROM employees WHERE TO_CHAR(hire_date, 'MM') = '04';
+9a. SELECT * FROM employees WHERE dep_id IN (1001, 3001) AND EXTRACT(YEAR FROM hire_date) = '1991';
+9b. SELECT * FROM employees WHERE dep_id IN (1001, 3001) AND TO_CHAR(hire_date, 'YYYY') = '1991';
+10a. SELECT * FROM employees WHERE EXTRACT(MONTH FROM hire_date) = '02' AND salary BETWEEN 1000 AND 2000;
+10b. SELECT * FROM employees WHERE TO_CHAR(hire_date, 'MM') = '02' AND salary BETWEEN 1000 AND 2000;

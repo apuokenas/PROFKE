@@ -1,4 +1,3 @@
-
 import fi.helsinki.cs.tmc.edutestutils.MockStdio;
 import fi.helsinki.cs.tmc.edutestutils.Points;
 import java.io.IOException;
