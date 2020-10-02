@@ -1,4 +1,3 @@
-
 import fi.helsinki.cs.tmc.edutestutils.MockStdio;
 import fi.helsinki.cs.tmc.edutestutils.Points;
 import fi.helsinki.cs.tmc.edutestutils.ReflectionUtils;
@@ -39,9 +38,11 @@ public class AverageOfPositiveNumbersTest {
         callMain(AverageOfPositiveNumbers.class);
         String out = io.getSysOut().substring(oldOut);
 
-        assertTrue("When input was:\n" + input + ", the expected out put was:\n" + expected + "\nOutput was not found.", out.contains(expected));
+        assertTrue("When input was:\n" + input + ", the expected out put was:\n" + expected + "\nOutput was not found.",
+                out.contains(expected));
         for (String unexpected : notExpected) {
-            assertFalse("When input was:\n" + input + ", output shouldn't contain:\n" + unexpected + "", out.contains(unexpected));
+            assertFalse("When input was:\n" + input + ", output shouldn't contain:\n" + unexpected + "",
+                    out.contains(unexpected));
         }
     }
 
@@ -53,8 +54,9 @@ public class AverageOfPositiveNumbersTest {
             Method m = ReflectionUtils.requireMethod(kl, "main", x.getClass());
             ReflectionUtils.invokeMethod(Void.TYPE, m, null, (Object) x);
         } catch (Throwable e) {
-            fail("Something unexpected happened. The public static void main(String[] args) method of '" + kl + "' class has disappeared \n"
-                    + "or your program crashed because of an exception. More info: " + e);
+            fail("Something unexpected happened. The public static void main(String[] args) method of '" + kl
+                    + "' class has disappeared \n" + "or your program crashed because of an exception. More info: "
+                    + e);
         }
     }
 

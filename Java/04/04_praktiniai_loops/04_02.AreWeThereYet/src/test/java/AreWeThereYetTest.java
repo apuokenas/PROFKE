@@ -1,4 +1,3 @@
-
 import fi.helsinki.cs.tmc.edutestutils.MockStdio;
 import fi.helsinki.cs.tmc.edutestutils.Points;
 import fi.helsinki.cs.tmc.edutestutils.ReflectionUtils;
@@ -36,7 +35,8 @@ public class AreWeThereYetTest {
 
         int count = out.trim().split("numbe").length - 1;
         int expected = input.split("\n").length;
-        assertEquals("When input was:\n" + input + "\nthe input should be requested " + expected + " times in total. Now the count was" + count, expected, count);
+        assertEquals("When input was:\n" + input + "\nthe input should be requested " + expected
+                + " times in total. Now the count was" + count, expected, count);
     }
 
     private void callMain(Class kl) {
@@ -47,7 +47,8 @@ public class AreWeThereYetTest {
             Method m = ReflectionUtils.requireMethod(kl, "main", x.getClass());
             ReflectionUtils.invokeMethod(Void.TYPE, m, null, (Object) x);
         } catch (Throwable e) {
-            fail("Something strange happened. It may be that '" + kl + "' class's public static void main(String[] args) -method is missing \n"
+            fail("Something strange happened. It may be that '" + kl
+                    + "' class's public static void main(String[] args) -method is missing \n"
                     + "or your program crashed due to an exception. More information " + e);
         }
     }

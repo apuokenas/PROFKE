@@ -1,4 +1,3 @@
-
 import fi.helsinki.cs.tmc.edutestutils.MockStdio;
 import fi.helsinki.cs.tmc.edutestutils.Points;
 import fi.helsinki.cs.tmc.edutestutils.ReflectionUtils;
@@ -47,10 +46,12 @@ public class NumberOfNumbersTest {
         int promptCount = out.trim().split("Give a number:").length - 1;
         int promtExpected = input.split("\n").length;
 
-        assertEquals("When the input was:\n" + input + "\n\"Give a number:\" text should appear a total of " + promtExpected + " times. Now the count was " + promptCount, promtExpected, promptCount);
+        assertEquals("When the input was:\n" + input + "\n\"Give a number:\" text should appear a total of "
+                + promtExpected + " times. Now the count was " + promptCount, promtExpected, promptCount);
 
         String expected = "Number of numbers: " + (numbers.length - 1);
-        assertTrue("When the input was:\n" + input + "\nThe output should contain \"" + expected + "\". Now the output was " + out, out.contains(expected));
+        assertTrue("When the input was:\n" + input + "\nThe output should contain \"" + expected
+                + "\". Now the output was " + out, out.contains(expected));
 
         for (int i = 0; i < 10; i++) {
             if (i == numbers.length - 1) {
@@ -58,7 +59,8 @@ public class NumberOfNumbersTest {
             }
 
             String notExpected = "Number of numbers: " + i;
-            assertFalse("When the input was:\n" + input + "\nThe output should not have contained \"" + notExpected + "\". Now the output was " + out, out.contains(notExpected));
+            assertFalse("When the input was:\n" + input + "\nThe output should not have contained \"" + notExpected
+                    + "\". Now the output was " + out, out.contains(notExpected));
         }
     }
 
@@ -70,7 +72,8 @@ public class NumberOfNumbersTest {
             Method m = ReflectionUtils.requireMethod(kl, "main", x.getClass());
             ReflectionUtils.invokeMethod(Void.TYPE, m, null, (Object) x);
         } catch (Throwable e) {
-      fail("Something strange happened. It may be that " + kl + " class's public static void main(String[] args) method is missing \n"
+            fail("Something strange happened. It may be that " + kl
+                    + " class's public static void main(String[] args) method is missing \n"
                     + "or your program crashed due to an exception. More information " + e);
         }
     }

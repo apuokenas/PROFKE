@@ -1,0 +1,21 @@
+0a. ALTER TABLE employees RENAME TO employees_backup_20200930; -- Before executing <northwind.sql>
+0b. SHOW COLUMNS FROM employees;
+0c. SHOW COLUMNS FROM customers;
+1. SELECT employeeid, firstname, lastname FROM employees WHERE birthdate = '1952-02-19';
+2. SELECT * FROM employees WHERE birthdate <= '1960-07-29';
+3. SELECT hiredate, birthdate FROM employees WHERE hiredate BETWEEN '1993-10-30' AND '2012-11-11';
+4. SELECT firstname, title, reportsto FROM employees WHERE city IN ('Seattle', 'London');
+5. SELECT contactname, companyname, customerid FROM customers WHERE city LIKE 'Ma%';
+6. SELECT * FROM employees WHERE birthdate LIKE '%-19';
+7. SELECT * FROM employees WHERE title LIKE '__l%';
+8. SELECT * FROM employees WHERE title IS NULL;
+9. SELECT firstname, lastname, hiredate, title FROM employees WHERE hiredate = '1993-10-17' AND title = 'Sales Manager';
+10. SELECT firstname, lastname, hiredate, reportsto FROM employees WHERE title = 'Sales Representative' OR reportsto = 5;
+11. SELECT DISTINCT firstname FROM employees WHERE firstname NOT LIKE 'M%';
+12. SELECT firstname, hiredate, birthdate FROM employees WHERE hiredate NOT BETWEEN '1992-08-07' AND '1994-03-04';
+13. SELECT firstname, lastname, birthdate FROM employees ORDER BY birthdate;
+14. SELECT firstname, lastname, birthdate FROM employees ORDER BY birthdate DESC;
+15. SELECT MAX(birthdate), MIN(birthdate) FROM employees;
+16. SELECT city, COUNT(*) FROM customers GROUP BY city;
+17. SELECT city, contacttitle, COUNT(*) FROM customers WHERE contacttitle = 'Accounting Manager' GROUP BY city;
+18. SELECT city, contacttitle, COUNT(*) FROM customers WHERE contacttitle = 'Accounting Manager' GROUP BY city HAVING COUNT(*) >= 2;

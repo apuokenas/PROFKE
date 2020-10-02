@@ -1,4 +1,3 @@
-
 import fi.helsinki.cs.tmc.edutestutils.MockStdio;
 import fi.helsinki.cs.tmc.edutestutils.Points;
 import fi.helsinki.cs.tmc.edutestutils.ReflectionUtils;
@@ -29,22 +28,27 @@ public class CountingTest {
         callMain(Counting.class);
         String out = io.getSysOut().substring(oldOut);
 
-        assertTrue("When input was:\n" + input + ", the following output was expected:\n" + expected + "\nNow the output was:\n" + out, out.contains(expected));
+        assertTrue("When input was:\n" + input + ", the following output was expected:\n" + expected
+                + "\nNow the output was:\n" + out, out.contains(expected));
         for (String unexpected : notExpected) {
-            assertFalse("When input was:\n" + input + ", the output was not expected to contain:\n" + unexpected + "", out.contains(unexpected));
+            assertFalse("When input was:\n" + input + ", the output was not expected to contain:\n" + unexpected + "",
+                    out.contains(unexpected));
         }
     }
 
-    public void verifyOrderOfOutput(String input, String expectationExplanation, String expectedRegex, String... notExpected) {
+    public void verifyOrderOfOutput(String input, String expectationExplanation, String expectedRegex,
+            String... notExpected) {
 
         int oldOut = io.getSysOut().length();
         io.setSysIn(input);
         callMain(Counting.class);
         String out = io.getSysOut().substring(oldOut);
 
-        assertTrue("When input was:\n" + input + ", the following output was expected:\n" + expectationExplanation + "\nNow the output was:\n" + out, out.matches(expectedRegex));
+        assertTrue("When input was:\n" + input + ", the following output was expected:\n" + expectationExplanation
+                + "\nNow the output was:\n" + out, out.matches(expectedRegex));
         for (String unexpected : notExpected) {
-            assertFalse("When input was:\n" + input + ", output wasn't expected to contain:\n" + unexpected + "", out.contains(unexpected));
+            assertFalse("When input was:\n" + input + ", output wasn't expected to contain:\n" + unexpected + "",
+                    out.contains(unexpected));
         }
     }
 
@@ -56,8 +60,9 @@ public class CountingTest {
             Method m = ReflectionUtils.requireMethod(kl, "main", x.getClass());
             ReflectionUtils.invokeMethod(Void.TYPE, m, null, (Object) x);
         } catch (Throwable e) {
-            fail("Something unexpected happened. The public static void main(String[] args) method of '" + kl + "' class has disappeared \n"
-                    + "or your program crashed because of an exception. More info: " + e);
+            fail("Something unexpected happened. The public static void main(String[] args) method of '" + kl
+                    + "' class has disappeared \n" + "or your program crashed because of an exception. More info: "
+                    + e);
         }
     }
 

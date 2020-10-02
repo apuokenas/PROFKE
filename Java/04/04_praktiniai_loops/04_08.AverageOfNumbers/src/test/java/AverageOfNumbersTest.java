@@ -1,4 +1,3 @@
-
 import fi.helsinki.cs.tmc.edutestutils.MockStdio;
 import fi.helsinki.cs.tmc.edutestutils.Points;
 import fi.helsinki.cs.tmc.edutestutils.ReflectionUtils;
@@ -48,14 +47,19 @@ public class AverageOfNumbersTest {
         int inputCount = out.trim().split("Give a number").length - 1;
         int inputExpected = input.split("\n").length;
 
-        assertEquals("When input was:\n" + input + "\n\"Give a number\"-text should appear " + inputExpected + " times. Now it appeared " + inputCount + " times.", inputExpected, inputCount);
+        assertEquals("When input was:\n" + input + "\n\"Give a number\"-text should appear " + inputExpected
+                + " times. Now it appeared " + inputCount + " times.", inputExpected, inputCount);
 
         double average = Arrays.stream(numbers).filter(num -> num != 0).average().getAsDouble();
 
         String expected = "Average of the numbers: " + average;
-        assertTrue("When input was:\n" + input + "\nThe output was expected to be \"" + expected + "\".\nNow the output was" + out, out.contains(expected));
+        assertTrue("When input was:\n" + input + "\nThe output was expected to be \"" + expected
+                + "\".\nNow the output was" + out, out.contains(expected));
 
-        assertTrue("Text \"Average og the numbers \" should only be printed once. Now it appeared " + (out.trim().split("Average of the numbers: ").length - 1) + " times.", out.trim().split("Average of the numbers: ").length - 1 == 1);
+        assertTrue(
+                "Text \"Average og the numbers \" should only be printed once. Now it appeared "
+                        + (out.trim().split("Average of the numbers: ").length - 1) + " times.",
+                out.trim().split("Average of the numbers: ").length - 1 == 1);
     }
 
     private void callMain(Class kl) {
@@ -66,8 +70,9 @@ public class AverageOfNumbersTest {
             Method m = ReflectionUtils.requireMethod(kl, "main", x.getClass());
             ReflectionUtils.invokeMethod(Void.TYPE, m, null, (Object) x);
         } catch (Throwable e) {
-            fail("Something unexpected happened. The public static void main(String[] args) method of '" + kl + "' class has disappeared \n"
-                    + "or your program crashed because of an exception. More info: " + e);
+            fail("Something unexpected happened. The public static void main(String[] args) method of '" + kl
+                    + "' class has disappeared \n" + "or your program crashed because of an exception. More info: "
+                    + e);
         }
     }
 

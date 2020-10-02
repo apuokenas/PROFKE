@@ -35,7 +35,8 @@ public class CarryOnTest {
 
         int count = out.trim().split("arry").length - 1;
         int expected = input.split("\n").length;
-        assertEquals("When input was:\n" + input + "\n'Shall we carry on?' question should appear " + expected + " times. Now it appeared " + count + " times.", expected, count);
+        assertEquals("When input was:\n" + input + "\n'Shall we carry on?' question should appear " + expected
+                + " times. Now it appeared " + count + " times.", expected, count);
     }
 
     private void callMain(Class kl) {
@@ -46,8 +47,9 @@ public class CarryOnTest {
             Method m = ReflectionUtils.requireMethod(kl, "main", x.getClass());
             ReflectionUtils.invokeMethod(Void.TYPE, m, null, (Object) x);
         } catch (Throwable e) {
-            fail("Something unexpected happened. The public static void main(String[] args) method of '" + kl + "' class has disappeared \n"
-                    + "or your program crashed because of an exception. More info: " + e);	
+            fail("Something unexpected happened. The public static void main(String[] args) method of '" + kl
+                    + "' class has disappeared \n" + "or your program crashed because of an exception. More info: "
+                    + e);
         }
     }
 

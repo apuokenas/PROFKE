@@ -1,4 +1,3 @@
-
 import fi.helsinki.cs.tmc.edutestutils.MockStdio;
 import fi.helsinki.cs.tmc.edutestutils.Points;
 import fi.helsinki.cs.tmc.edutestutils.ReflectionUtils;
@@ -48,12 +47,14 @@ public class NumberOfNegativeNumbersTest {
         int promptCount = out.trim().split("Give a number:").length - 1;
         int promtExpected = input.split("\n").length;
 
-        assertEquals("When input was:\n" + input + "\n\"Give a number\" text was expected to appear " + promtExpected + " times. Now it appeared " + promptCount + " times.", promtExpected, promptCount);
+        assertEquals("When input was:\n" + input + "\n\"Give a number\" text was expected to appear " + promtExpected
+                + " times. Now it appeared " + promptCount + " times.", promtExpected, promptCount);
 
         int negatives = (int) Arrays.stream(numbers).filter(num -> num < 0).count();
-        
+
         String expected = "Number of negative numbers: " + negatives;
-        assertTrue("When input was:\n" + input + "\nProgram should have contained \"" + expected + "\". Now the output was " + out, out.contains(expected));
+        assertTrue("When input was:\n" + input + "\nProgram should have contained \"" + expected
+                + "\". Now the output was " + out, out.contains(expected));
 
         for (int i = 0; i < 10; i++) {
             if (i == negatives) {
@@ -61,7 +62,8 @@ public class NumberOfNegativeNumbersTest {
             }
 
             String notExpected = "Number of negative numbers: " + i;
-            assertFalse("When input was:\n" + input + "\nThe program should not have contained \"" + notExpected + "\". Now the output was " + out, out.contains(notExpected));
+            assertFalse("When input was:\n" + input + "\nThe program should not have contained \"" + notExpected
+                    + "\". Now the output was " + out, out.contains(notExpected));
         }
     }
 
@@ -73,7 +75,8 @@ public class NumberOfNegativeNumbersTest {
             Method m = ReflectionUtils.requireMethod(kl, "main", x.getClass());
             ReflectionUtils.invokeMethod(Void.TYPE, m, null, (Object) x);
         } catch (Throwable e) {
-      fail("Something strange happened. It may be that '" + kl + "'class's public static void main(String[] args) method is missing \n"
+            fail("Something strange happened. It may be that '" + kl
+                    + "'class's public static void main(String[] args) method is missing \n"
                     + "or your program crashed due to an exception. More information " + e);
         }
     }

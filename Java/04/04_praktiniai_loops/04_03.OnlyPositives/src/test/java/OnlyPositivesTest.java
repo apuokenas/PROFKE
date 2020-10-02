@@ -51,14 +51,19 @@ public class OnlyPositivesTest {
         int promptCount = out.trim().split("Give a number:*").length;
         int promtExpected = input.split("\n").length;
 
-        assertEquals("When input was:\n" + input + "\n\"Give a number\" prompt was expected to appear " + promtExpected + " times. Now it appeared " + promptCount + " times.", promtExpected, promptCount);
+        assertEquals("When input was:\n" + input + "\n\"Give a number\" prompt was expected to appear " + promtExpected
+                + " times. Now it appeared " + promptCount + " times.", promtExpected, promptCount);
 
         int unsuitableCount = out.trim().split("Unsuitable number").length - 1;
         int unsuitableExpected = (int) Arrays.stream(numbers).filter(number -> number < 0).count();
 
-        assertEquals("When the input was:\n" + input + "\n\"Unsuitable number\" text should appear " + unsuitableExpected + " times. Now it appeared " + unsuitableCount + " times.", unsuitableExpected, unsuitableCount);
+        assertEquals(
+                "When the input was:\n" + input + "\n\"Unsuitable number\" text should appear " + unsuitableExpected
+                        + " times. Now it appeared " + unsuitableCount + " times.",
+                unsuitableExpected, unsuitableCount);
 
-        List<Integer> numbersNotThere = new ArrayList<>(IntStream.range(2, 10).mapToObj(i -> i * i).collect(Collectors.toList()));
+        List<Integer> numbersNotThere = new ArrayList<>(
+                IntStream.range(2, 10).mapToObj(i -> i * i).collect(Collectors.toList()));
 
         for (int i = 0; i < numbers.length; i++) {
             if (numbers[i] <= 0) {
@@ -69,11 +74,13 @@ public class OnlyPositivesTest {
 
             numbersNotThere.remove(new Integer(mult));
 
-            assertTrue("When the input was:\n" + input + "\nThe output should have " + mult + ". Now it didn't. Output:\n" + out, out.contains("" + mult));
+            assertTrue("When the input was:\n" + input + "\nThe output should have " + mult
+                    + ". Now it didn't. Output:\n" + out, out.contains("" + mult));
         }
 
         for (Integer number : numbersNotThere) {
-            assertFalse("When the input was:\n" + input + "\nThe output should not contain " + number + ". Now it did. Output:\n" + out, out.contains("" + number));
+            assertFalse("When the input was:\n" + input + "\nThe output should not contain " + number
+                    + ". Now it did. Output:\n" + out, out.contains("" + number));
         }
     }
 
@@ -85,7 +92,8 @@ public class OnlyPositivesTest {
             Method m = ReflectionUtils.requireMethod(kl, "main", x.getClass());
             ReflectionUtils.invokeMethod(Void.TYPE, m, null, (Object) x);
         } catch (Throwable e) {
-            fail("Something strange happened. It may be that '" + kl + "' class's public static void main(String[] args) method is missing \n"
+            fail("Something strange happened. It may be that '" + kl
+                    + "' class's public static void main(String[] args) method is missing \n"
                     + "or your program crashed due to an exception. More information " + e);
         }
     }

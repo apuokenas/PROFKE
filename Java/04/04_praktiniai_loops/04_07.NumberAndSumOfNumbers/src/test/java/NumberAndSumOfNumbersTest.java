@@ -1,4 +1,3 @@
-
 import fi.helsinki.cs.tmc.edutestutils.MockStdio;
 import fi.helsinki.cs.tmc.edutestutils.Points;
 import fi.helsinki.cs.tmc.edutestutils.ReflectionUtils;
@@ -48,12 +47,14 @@ public class NumberAndSumOfNumbersTest {
         int inputCount = out.trim().split("Give a number:").length - 1;
         int inputExpected = input.split("\n").length;
 
-        assertEquals("When input was:\n" + input + "\n\"Give a number:\" text should appear " + inputExpected + " times. Now it appeared " + inputCount + " times.", inputExpected, inputCount);
+        assertEquals("When input was:\n" + input + "\n\"Give a number:\" text should appear " + inputExpected
+                + " times. Now it appeared " + inputCount + " times.", inputExpected, inputCount);
 
         int sum = (int) Arrays.stream(numbers).sum();
 
         String expected = "Sum of the numbers: " + sum;
-        assertTrue("When input was:\n" + input + "\nThe program should contain output: \"" + expected + "\".\nNow the output was " + out, out.contains(expected));
+        assertTrue("When input was:\n" + input + "\nThe program should contain output: \"" + expected
+                + "\".\nNow the output was " + out, out.contains(expected));
 
         for (int i = 0; i < 100; i++) {
             if (i == sum) {
@@ -61,12 +62,14 @@ public class NumberAndSumOfNumbersTest {
             }
 
             String notExpected = "Sum of the numbers: " + i;
-            assertFalse("When input was:\n" + input + "\nThe program should not contain output \"" + notExpected + "\".\nNow the output was " + out, out.contains(notExpected));
+            assertFalse("When input was:\n" + input + "\nThe program should not contain output \"" + notExpected
+                    + "\".\nNow the output was " + out, out.contains(notExpected));
         }
 
         int count = inputExpected - 1;
         String countExpected = "Number of numbers: " + count;
-        assertTrue("When input was:\n" + input + "\nThe program should contain output \"" + countExpected + "\".\nNow the output was" + out, out.contains(countExpected));
+        assertTrue("When input was:\n" + input + "\nThe program should contain output \"" + countExpected
+                + "\".\nNow the output was" + out, out.contains(countExpected));
 
         for (int i = 0; i < 100; i++) {
             if (i == count) {
@@ -74,7 +77,8 @@ public class NumberAndSumOfNumbersTest {
             }
 
             String notExpected = "Number of numbers: " + i;
-            assertFalse("When input was:\n" + input + "\nThe program shouldn't contain output \"" + notExpected + "\".\nNow the output was " + out, out.contains(notExpected));
+            assertFalse("When input was:\n" + input + "\nThe program shouldn't contain output \"" + notExpected
+                    + "\".\nNow the output was " + out, out.contains(notExpected));
         }
     }
 
@@ -86,8 +90,9 @@ public class NumberAndSumOfNumbersTest {
             Method m = ReflectionUtils.requireMethod(kl, "main", x.getClass());
             ReflectionUtils.invokeMethod(Void.TYPE, m, null, (Object) x);
         } catch (Throwable e) {
-            fail("Something unexpected happened. The public static void main(String[] args) method of '" + kl + "' class has disappeared \n"
-                    + "or your program crashed because of an exception. More info: " + e);
+            fail("Something unexpected happened. The public static void main(String[] args) method of '" + kl
+                    + "' class has disappeared \n" + "or your program crashed because of an exception. More info: "
+                    + e);
         }
     }
 
