@@ -15,13 +15,9 @@ public class Part3Test {
 
     @Test
     public void test() {
-        int[][] input = {
-            {1, -1, 1},
-            {2, 5, -1, 2},
-            {6, 1, 4, 7, 4, 9, -1, 6},
-            {7, 2, 4, 7, 4, 9, 5, 1, 5, 7, -1, 10}
-        };
- 
+        int[][] input = { { 1, -1, 1 }, { 2, 5, -1, 2 }, { 6, 1, 4, 7, 4, 9, -1, 6 },
+                { 7, 2, 4, 7, 4, 9, 5, 1, 5, 7, -1, 10 } };
+
         for (int i = 0; i < input.length; i++) {
             check(input[i], "Numbers: ");
         }
@@ -34,10 +30,10 @@ public class Part3Test {
         String out = io.getSysOut().substring(oldOut);
         int expected = result(input);
 
-        String errorMsg = "With the input "+StringifyInBetween(input)+ 
-                " the out put should be \""+str+": "+expected+"\"";
+        String errorMsg = "With the input " + StringifyInBetween(input) + " the out put should be \"" + str + ": "
+                + expected + "\"";
         assertTrue("you're not printing anything!", out.length() > 0);
-        assertEquals(errorMsg, expected, getLastNumber(line(out, str)) );
+        assertEquals(errorMsg, expected, getLastNumber(line(out, str)));
     }
 
     private void callMain(Class kl) {
@@ -67,24 +63,24 @@ public class Part3Test {
 
     private String stringify(int[] array) {
         String str = "";
-        for (int i = 0; i < array.length-1; i++) {
+        for (int i = 0; i < array.length - 1; i++) {
             str += array[i] + "\n";
-        }        
+        }
 
         return str;
     }
-    
+
     private String StringifyInBetween(int[] array) {
         String str = "";
-        for (int i = 0; i < array.length-1; i++) {
-            str += array[i] + " ";            
-        }  
+        for (int i = 0; i < array.length - 1; i++) {
+            str += array[i] + " ";
+        }
 
         return str;
     }
 
     private int result(int[] input) {
-        return input[input.length-1];
+        return input[input.length - 1];
     }
 
     private String line(String out, String str) {
@@ -93,8 +89,8 @@ public class Part3Test {
                 return line;
             }
         }
-        
+
         fail("Your program should print the count of the number with a line of the type \"Numbers: 3\"\n");
-        return "";    
+        return "";
     }
 }

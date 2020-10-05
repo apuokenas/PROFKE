@@ -35,13 +35,14 @@ public class WhereToTest {
 
         output = output.trim();
         if (!output.isEmpty()) {
-            fail("When you're printing numbers until 3, you should only print numbers 1, 2, and 3. Now you printed: " + output);
+            fail("When you're printing numbers until 3, you should only print numbers 1, 2, and 3. Now you printed: "
+                    + output);
         }
     }
 
     @Test
     public void testi() {
-        int[] numbers = {1, 50, 100};
+        int[] numbers = { 1, 50, 100 };
         for (int number : numbers) {
             testaa(number);
         }
@@ -67,7 +68,8 @@ public class WhereToTest {
     private static int getLastNumber(String inputStr, int last) {
         String patternStr = "(?s).*?(\\d+)\\s*$";
         Matcher matcher = Pattern.compile(patternStr).matcher(inputStr);
-        assertTrue("You should print numbers. With the user input "+last+ ", \""+inputStr+"\"" + "was printed", matcher.find());
+        assertTrue("You should print numbers. With the user input " + last + ", \"" + inputStr + "\"" + "was printed",
+                matcher.find());
 
         int number = Integer.valueOf(matcher.group(1));
         return number;

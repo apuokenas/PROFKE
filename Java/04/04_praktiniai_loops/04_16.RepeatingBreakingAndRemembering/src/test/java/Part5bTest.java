@@ -15,13 +15,9 @@ public class Part5bTest {
 
     @Test
     public void test() {
-        int[][] input = {
-            {1, -1, 1},
-            {2, 5, -1, 1},
-            {6, 1, 4, 7, 4, 9, -1, 3},
-            {7, 2, 4, 7, 4, 9, 5, 1, 5, 7, -1, 7}
-        };
- 
+        int[][] input = { { 1, -1, 1 }, { 2, 5, -1, 1 }, { 6, 1, 4, 7, 4, 9, -1, 3 },
+                { 7, 2, 4, 7, 4, 9, 5, 1, 5, 7, -1, 7 } };
+
         for (int i = 0; i < input.length; i++) {
             check(input[i], "Odd");
         }
@@ -34,10 +30,10 @@ public class Part5bTest {
         String out = io.getSysOut().substring(oldOut);
         int expected = result(input);
 
-        String errorMsg = "With the input "+stringifyInBetween(input)+ 
-                " output should be \""+str+": "+expected+"\"";
+        String errorMsg = "With the input " + stringifyInBetween(input) + " output should be \"" + str + ": " + expected
+                + "\"";
         assertTrue("you aren't printing anything!", out.length() > 0);
-        assertEquals(errorMsg, expected, getLastNumber(line(out, str)) );
+        assertEquals(errorMsg, expected, getLastNumber(line(out, str)));
     }
 
     private void callMain(Class kl) {
@@ -67,34 +63,34 @@ public class Part5bTest {
 
     private String stringify(int[] array) {
         String str = "";
-        for (int i = 0; i < array.length-1; i++) {
+        for (int i = 0; i < array.length - 1; i++) {
             str += array[i] + "\n";
-            
-        }        
+
+        }
 
         return str;
     }
-    
+
     private String stringifyInBetween(int[] array) {
         String str = "";
-        for (int i = 0; i < array.length-1; i++) {
-            str += array[i] + " ";            
-        }  
+        for (int i = 0; i < array.length - 1; i++) {
+            str += array[i] + " ";
+        }
 
         return str;
     }
 
     private int result(int[] input) {
-        return input[input.length-1];
+        return input[input.length - 1];
     }
 
     private String line(String out, String str) {
         for (String line : out.split("\n")) {
-            if ( line.toLowerCase().contains(str.toLowerCase())) return line;
+            if (line.toLowerCase().contains(str.toLowerCase()))
+                return line;
         }
-        
-        fail("Your program should print the number of odd the numbers"
-                + "with a line of the type \"Odd: 3\"\n");
-        return "";    
+
+        fail("Your program should print the number of odd the numbers" + "with a line of the type \"Odd: 3\"\n");
+        return "";
     }
 }

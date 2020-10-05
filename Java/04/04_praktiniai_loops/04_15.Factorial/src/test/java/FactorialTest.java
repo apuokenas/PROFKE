@@ -1,4 +1,3 @@
-
 import fi.helsinki.cs.tmc.edutestutils.MockStdio;
 import fi.helsinki.cs.tmc.edutestutils.Points;
 import fi.helsinki.cs.tmc.edutestutils.ReflectionUtils;
@@ -17,7 +16,7 @@ public class FactorialTest {
 
     @Test
     public void test() {
-        int[][] input = {{3, 6}, {4, 24}, {5, 120}, {7, 5040}};
+        int[][] input = { { 3, 6 }, { 4, 24 }, { 5, 120 }, { 7, 5040 } };
 
         for (int i = 0; i < input.length; i++) {
             check(input[i][0], input[i][1]);
@@ -32,8 +31,7 @@ public class FactorialTest {
 
         int result = getLastNumber(out);
 
-        String errorMsg = " The factorial of " + num + " is " + expectedResult
-                + ", but you printed \"" + out + "\"";
+        String errorMsg = " The factorial of " + num + " is " + expectedResult + ", but you printed \"" + out + "\"";
         assertTrue("you didn't print anything!", out.length() > 0);
         assertEquals(errorMsg, expectedResult, result);
     }

@@ -13,12 +13,7 @@ public class Part4Test {
 
     @Test
     public void test() {
-        int[][] input = {
-            {1, -1, 1},
-            {2, 6, -1, 4},
-            {2, 6, 5, 7, -1, 5}, 
-            {6, 1, 4, 7, 4, 8, -1, 5}
-        };
+        int[][] input = { { 1, -1, 1 }, { 2, 6, -1, 4 }, { 2, 6, 5, 7, -1, 5 }, { 6, 1, 4, 7, 4, 8, -1, 5 } };
 
         for (int i = 0; i < input.length; i++) {
             check(input[i], "");
@@ -27,15 +22,14 @@ public class Part4Test {
 
     @Test
     public void test2() {
-        int[] input = {2, 5, -1, 0};
+        int[] input = { 2, 5, -1, 0 };
         int oldOut = io.getSysOut().length();
         io.setSysIn(stringify(input));
         callMain(RepeatingBreakingAndRemembering.class);
         String out = io.getSysOut().substring(oldOut);
 
         String errorMsg = "With the input " + stringifyInBetween(input)
-                + " the output should be \"Average: 3.5\", but you printed " +
-                line(out, "verage");
+                + " the output should be \"Average: 3.5\", but you printed " + line(out, "verage");
         assertTrue("you're not printing anything!", out.length() > 0);
         assertTrue(errorMsg, out.contains("3.5"));
     }
@@ -47,11 +41,10 @@ public class Part4Test {
         String out = io.getSysOut().substring(oldOut);
         int expected = result(input);
 
-        String errorMsg = "With the input " + stringifyInBetween(input)
-                + " the output should be \"" + str + ": " + expected +
-                ".0\", but you printed " + line(out, "verage");
+        String errorMsg = "With the input " + stringifyInBetween(input) + " the output should be \"" + str + ": "
+                + expected + ".0\", but you printed " + line(out, "verage");
         assertTrue("you're not printing anything!", out.length() > 0);
-        assertTrue(errorMsg, out.contains(expected+".0"));
+        assertTrue(errorMsg, out.contains(expected + ".0"));
     }
 
     private void callMain(Class kl) {

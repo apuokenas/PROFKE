@@ -13,9 +13,8 @@ public class Part1Test {
 
     @Test
     public void test() {
-        int[][] input = {{1, -1}, {2, 5, -1}};
+        int[][] input = { { 1, -1 }, { 2, 5, -1 } };
 
-       
         for (int i = 0; i < input.length; i++) {
             int oldOut = io.getSysOut().length();
             io.setSysIn(stringify(input[i]));
@@ -30,7 +29,6 @@ public class Part1Test {
         }
 
     }
-
 
     private void callMain(Class kl) {
         try {

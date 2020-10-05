@@ -1,4 +1,3 @@
-
 import fi.helsinki.cs.tmc.edutestutils.MockStdio;
 import fi.helsinki.cs.tmc.edutestutils.Points;
 import fi.helsinki.cs.tmc.edutestutils.ReflectionUtils;
@@ -17,11 +16,7 @@ public class Osa2Test {
 
     @Test
     public void test() {
-        int[][] input = {
-            {1, -1, 1},
-            {2, 5, -1, 7},
-            {6, 1, 4, 7, 4, 9, -1, 31}
-        };
+        int[][] input = { { 1, -1, 1 }, { 2, 5, -1, 7 }, { 6, 1, 4, 7, 4, 9, -1, 31 } };
 
         for (int i = 0; i < input.length; i++) {
             check(input[i], "Sum");
@@ -35,8 +30,8 @@ public class Osa2Test {
         String out = io.getSysOut().substring(oldOut);
         int expected = result(input);
 
-        String errorMsg = "With the input " + stringifyInBetween(input)
-                + " the output should be \"" + str + ": " + expected + "\"";
+        String errorMsg = "With the input " + stringifyInBetween(input) + " the output should be \"" + str + ": "
+                + expected + "\"";
         assertTrue("you're not printing anything!", out.length() > 0);
         assertEquals(errorMsg, expected, getLastNumber(line(out, str)));
     }
@@ -58,7 +53,9 @@ public class Osa2Test {
     private static int getLastNumber(String inputStr) {
         String nums = inputStr.replaceAll("[^0-9]", " ");
         nums = nums.trim().replaceAll("\\s+", " ");
-        assertTrue("The output should contain a row of the type \"Sum: 3\". Make sure you're not using floating point numbers for the sum", nums.split("\\s+").length == 1);
+        assertTrue(
+                "The output should contain a row of the type \"Sum: 3\". Make sure you're not using floating point numbers for the sum",
+                nums.split("\\s+").length == 1);
 
         String patternStr = "(?s).*?(\\d+)\\s*$";
 

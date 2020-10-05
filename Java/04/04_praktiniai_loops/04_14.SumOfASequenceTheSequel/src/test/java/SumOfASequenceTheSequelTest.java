@@ -1,4 +1,3 @@
-
 import fi.helsinki.cs.tmc.edutestutils.MockStdio;
 import fi.helsinki.cs.tmc.edutestutils.Points;
 import fi.helsinki.cs.tmc.edutestutils.ReflectionUtils;
@@ -17,7 +16,7 @@ public class SumOfASequenceTheSequelTest {
 
     @Test
     public void test() {
-        int[][] input = {{1, 2, 3}, {2, 4, 9}, {3, 6, 18}, {4, 7, 22}};
+        int[][] input = { { 1, 2, 3 }, { 2, 4, 9 }, { 3, 6, 18 }, { 4, 7, 22 } };
 
         for (int i = 0; i < input.length; i++) {
             check(input[i][0], input[i][1], input[i][2]);
@@ -34,7 +33,8 @@ public class SumOfASequenceTheSequelTest {
 
         int result = getLastNumber(out);
 
-        String errorMessage = "Sum of " + first + ".." + last + " should be " + expectedResult + " but you printed \"" + out + "\"";
+        String errorMessage = "Sum of " + first + ".." + last + " should be " + expectedResult + " but you printed \""
+                + out + "\"";
         assertEquals(errorMessage, expectedResult, result);
     }
 

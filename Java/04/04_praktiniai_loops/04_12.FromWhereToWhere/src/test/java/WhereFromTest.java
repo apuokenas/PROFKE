@@ -1,4 +1,3 @@
-
 import fi.helsinki.cs.tmc.edutestutils.MockStdio;
 import fi.helsinki.cs.tmc.edutestutils.Points;
 import fi.helsinki.cs.tmc.edutestutils.ReflectionUtils;
@@ -15,7 +14,7 @@ public class WhereFromTest {
 
     @Test
     public void test() {
-        int[][] pairs = {{1, 1}, {12, 8}, {50, 100}, {-2,2}};
+        int[][] pairs = { { 1, 1 }, { 12, 8 }, { 50, 100 }, { -2, 2 } };
         for (int[] pair : pairs) {
             test(pair);
         }
@@ -34,32 +33,35 @@ public class WhereFromTest {
         int linesInOutput = (lines.length == 1 && lines[0].isEmpty()) ? 0 : lines.length;
 
         int linesCount;
-        if(pair[0] < pair[1]) {
+        if (pair[0] < pair[1]) {
             linesCount = 0;
         } else {
-            linesCount = pair[0]  - pair[1] + 1;
+            linesCount = pair[0] - pair[1] + 1;
         }
 
         if (linesCount != linesInOutput) {
-            String numbersCount = (linesCount == 1) ? "number": "numbers";
-            fail("With the input " + pair[0] + ", " + pair[1] + " output should contain " + linesCount + " " + numbersCount + ", now it contained " + linesInOutput);
+            String numbersCount = (linesCount == 1) ? "number" : "numbers";
+            fail("With the input " + pair[0] + ", " + pair[1] + " output should contain " + linesCount + " "
+                    + numbersCount + ", now it contained " + linesInOutput);
         }
-        
-        if(linesCount == 0) {
+
+        if (linesCount == 0) {
             return;
         }
 
         int firstNumber = Integer.valueOf(lines[0]);
-        if(firstNumber != pair[1]) {
-            fail("With the input " + pair[0] + ", " + pair[1] + " the first printed number should be " + pair[1] + ", now it was " + firstNumber);
+        if (firstNumber != pair[1]) {
+            fail("With the input " + pair[0] + ", " + pair[1] + " the first printed number should be " + pair[1]
+                    + ", now it was " + firstNumber);
         }
-        
+
         int lastNumber = getLastNumber(output);
-        if(lastNumber != pair[0]) {
-            fail("With the input " + pair[0] + ", " + pair[1] + " the last printed number should be " + pair[0] + ", now it was " + lastNumber);
+        if (lastNumber != pair[0]) {
+            fail("With the input " + pair[0] + ", " + pair[1] + " the last printed number should be " + pair[0]
+                    + ", now it was " + lastNumber);
         }
     }
-    
+
     private static int getLastNumber(String inputStr) {
         String patternStr = "(?s).*?(-?\\d+)\\s*$";
         Matcher matcher = Pattern.compile(patternStr).matcher(inputStr);

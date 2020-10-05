@@ -1,4 +1,3 @@
-
 import fi.helsinki.cs.tmc.edutestutils.MockStdio;
 import fi.helsinki.cs.tmc.edutestutils.Points;
 import fi.helsinki.cs.tmc.edutestutils.ReflectionUtils;
@@ -17,7 +16,7 @@ public class SumOfASequenceTest {
 
     @Test
     public void test() {
-        int[][] input = {{3, 6}, {4, 10}, {5, 15}, {10, 55}};
+        int[][] input = { { 3, 6 }, { 4, 10 }, { 5, 15 }, { 10, 55 } };
 
         for (int i = 0; i < input.length; i++) {
             check(input[i][0], input[i][1]);
@@ -34,8 +33,8 @@ public class SumOfASequenceTest {
 
         int result = getLastNumber(out);
 
-        String errorMessage = "sum of " + first + ".." + last + " should be "
-                + expectedResult + ", but you printed \"" + out + "\"";
+        String errorMessage = "sum of " + first + ".." + last + " should be " + expectedResult + ", but you printed \""
+                + out + "\"";
         assertTrue("you're not printing anything!", out.length() > 0);
         assertEquals(errorMessage, expectedResult, result);
 
@@ -50,11 +49,11 @@ public class SumOfASequenceTest {
             Method m = ReflectionUtils.requireMethod(kl, "main", x.getClass());
             ReflectionUtils.invokeMethod(Void.TYPE, m, null, (Object) x);
         } catch (NoSuchElementException e) {
-            fail("remember to read the input with nextLine()\n"
-                    + "read the input only once");
+            fail("remember to read the input with nextLine()\n" + "read the input only once");
         } catch (Throwable e) {
-            fail("Something unexpected happened. The public static void main(String[] args) method of '" + kl + "' class has disappeared \n"
-                    + "or your program crashed because of an exception. More info: " + e);
+            fail("Something unexpected happened. The public static void main(String[] args) method of '" + kl
+                    + "' class has disappeared \n" + "or your program crashed because of an exception. More info: "
+                    + e);
         }
     }
 

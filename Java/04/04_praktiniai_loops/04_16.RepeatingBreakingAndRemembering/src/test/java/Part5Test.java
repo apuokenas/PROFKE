@@ -1,4 +1,3 @@
-
 import fi.helsinki.cs.tmc.edutestutils.MockStdio;
 import fi.helsinki.cs.tmc.edutestutils.Points;
 import fi.helsinki.cs.tmc.edutestutils.ReflectionUtils;
@@ -17,12 +16,8 @@ public class Part5Test {
 
     @Test
     public void test() {
-        int[][] input = {
-            {1, -1, 0},
-            {2, 5, -1, 1},
-            {6, 1, 4, 7, 4, 9, -1, 3},
-            {7, 2, 4, 7, 4, 9, 5, 1, 5, 7, -1, 3}
-        };
+        int[][] input = { { 1, -1, 0 }, { 2, 5, -1, 1 }, { 6, 1, 4, 7, 4, 9, -1, 3 },
+                { 7, 2, 4, 7, 4, 9, 5, 1, 5, 7, -1, 3 } };
 
         for (int i = 0; i < input.length; i++) {
             check(input[i], "Even");
@@ -36,8 +31,8 @@ public class Part5Test {
         String out = io.getSysOut().substring(oldOut);
         int expected = result(input);
 
-        String errorMsg = "With the input " + stringifyInBetween(input)
-                + " the output should be \"" + str + ": " + expected + "\"";
+        String errorMsg = "With the input " + stringifyInBetween(input) + " the output should be \"" + str + ": "
+                + expected + "\"";
         assertTrue("you aren't printing anything!", out.length() > 0);
         assertEquals(errorMsg, expected, getLastNumber(line(out, str)));
     }
@@ -98,8 +93,7 @@ public class Part5Test {
             }
         }
 
-        fail("Your program should print the number of the even numbers "
-                + "with a line of the type \"Even: 3\"\n");
+        fail("Your program should print the number of the even numbers " + "with a line of the type \"Even: 3\"\n");
         return "";
     }
 }
