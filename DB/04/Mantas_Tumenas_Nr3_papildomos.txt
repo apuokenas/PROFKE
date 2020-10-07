@@ -3,22 +3,8 @@
 2. SELECT productid, ROUND(SUM(unitprice * quantity * (1 - discount)), 2) FROM order_details GROUP BY productid;
 3. SELECT ROUND(SUM(unitprice * quantity * (1 - discount)), 2) FROM order_details WHERE discount = 0.0;
 4. SELECT orderid "Užsakymo Nr.", ROUND(SUM(unitprice * quantity * (1 - discount)), 2) "Skaičius" FROM order_details GROUP BY orderid;
-5. SELECT CONCAT(orderid, ' užsakymo ', productid, ' produktas atnešė ', ROUND(SUM(unitprice * quantity * (1 - discount)), 2), ' pajamų') FROM order_details GROUP BY orderid HAVING ROUND(MAX(SUM(unitprice * quantity * (1 - discount))), 2);
-
-SELECT orderid, productid, ROUND(SUM(unitprice * quantity * (1 - discount)), 2) FROM order_details WHERE ROUND(SUM(unitprice * quantity * (1 - discount)), 2) = MAX(ROUND(SUM(unitprice * quantity * (1 - discount)), 2)) GROUP BY orderid;
-
-SELECT * 
-FROM order_details WHERE (orderid, productid) IN 
-( SELECT orderid, productid MAX(ROUND(SUM(unitprice * quantity * (1 - discount)))
-  FROM order_details
-  GROUP BY orderid, productid
-)
-
-6. SELECT emp_id, emp_name, salary, DATEDIFF(DAY, hire_date, SYSDATE) AS experience FROM employees WHERE manager_id = 68319;
-7. SELECT * FROM employees WHERE salary % 2 <> 0;
-8a. SELECT * FROM employees WHERE EXTRACT(MONTH FROM hire_date) = '04';
-8b. SELECT * FROM employees WHERE TO_CHAR(hire_date, 'MM') = '04';
-9a. SELECT * FROM employees WHERE dep_id IN (1001, 3001) AND EXTRACT(YEAR FROM hire_date) = '1991';
-9b. SELECT * FROM employees WHERE dep_id IN (1001, 3001) AND TO_CHAR(hire_date, 'YYYY') = '1991';
-10a. SELECT * FROM employees WHERE EXTRACT(MONTH FROM hire_date) = '02' AND salary BETWEEN 1000 AND 2000;
-10b. SELECT * FROM employees WHERE TO_CHAR(hire_date, 'MM') = '02' AND salary BETWEEN 1000 AND 2000;
+5. SELECT CONCAT(orderid, ' užsakymo ', productid, ' produktas atnešė ', round(MAX(incomes), 2), ' pajamų') FROM (SELECT orderid, MAX(productid) KEEP(DENSE_RANK FIRST ORDER BY SUM(unitprice * quantity * (1 - discount)) DESC NULLS LAST) productid FROM order_details GROUP BY orderid) GROUP BY orderid, productid;
+6. SELECT c.categoryname, COUNT(*) FROM categories c, products p WHERE c.categoryid = p.categoryid GROUP BY c.categoryname, p.discontinued HAVING p.discontinued = 0;
+7a. SELECT shipcountry, COUNT(*) FROM orders GROUP BY shipcountry ORDER BY COUNT(*) DESC LIMIT 1; -- Max shipments to country (Germany | 244)
+7b. SELECT shipcountry, COUNT(*) FROM orders GROUP BY shipcountry ORDER BY COUNT(*) LIMIT 1; -- Min shipments to country (Norway | 12)
+8. SELECT shipcountry, ROUND(SUM(santykis), 2) FROM (SELECT shipcountry, SUM(od.unitprice * od.quantity * (1 - od.discount)) / COUNT(*) santykis FROM orders o, order_details od WHERE o.orderid = od.orderid GROUP BY o.shipcountry, od.orderid) GROUP BY shipcountry;
